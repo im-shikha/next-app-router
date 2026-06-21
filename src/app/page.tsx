@@ -1,11 +1,15 @@
 import Image from "next/image";
+import { inter } from "@/app/ui/fonts";
 
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <h1 className="text-4xl font-bold text-zinc-900 dark:text-zinc-50">
+      <h1
+        className={`${inter.className} text-4xl font-bold text-zinc-900 dark:text-zinc-50`}
+      >
         Hello, Next.js!
       </h1>
+      <p className="text-2xl text-red-500">Global Font</p>
     </div>
   );
 }
