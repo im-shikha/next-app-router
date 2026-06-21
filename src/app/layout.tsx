@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { indieFlower } from "@/app/ui/fonts";
+import SideNav from "@/app/ui/home/sidenav";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,8 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full antialiased`}>
-      <body className={`${indieFlower.className} min-h-full flex flex-col`}>
-        {children}
+      <body className={`${indieFlower.className} min-h-full`}>
+        <div className="min-h-screen flex">
+          <SideNav />
+          <main className="flex-1">{children}</main>
+        </div>
       </body>
     </html>
   );
