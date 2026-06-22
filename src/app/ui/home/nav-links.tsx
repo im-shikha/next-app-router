@@ -5,7 +5,9 @@ import {
   CurrencyRupeeIcon,
   SquaresPlusIcon,
 } from "@heroicons/react/24/outline";
+import clsx from "clsx";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const links = [
   { name: "Home", href: "/home", icon: HomeIcon },
@@ -14,6 +16,7 @@ const links = [
 ];
 
 export default function NavLinks() {
+  const pathname = usePathname();
   return (
     <>
       {links.map((link) => {
@@ -22,7 +25,13 @@ export default function NavLinks() {
           <Link
             key={link.name}
             href={link.href}
-            className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+            className={clsx(
+              "flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:hover:text-zinc-50",
+              {
+                "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50":
+                  pathname === link.href,
+              },
+            )}
           >
             <Icon className="h-5 w-5" />
             <span>{link.name}</span>
